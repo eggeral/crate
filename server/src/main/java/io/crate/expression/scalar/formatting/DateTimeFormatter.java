@@ -313,7 +313,7 @@ public class DateTimeFormatter {
             if (currentElement instanceof Token currentToken) {
                 String formattedValue = getElement(currentToken, datetime);
                 String suffix = "";
-                if (tokens.size() > i + 1) {
+                if (!currentToken.isBoundToPrecedingToken() && tokens.size() > i + 1) {
                     Object nextElement = tokens.get(i + 1);
                     if (nextElement instanceof Token nextToken && nextToken.isBoundToPrecedingToken()) {
                         suffix = computeOrdinalSuffix(formattedValue, nextToken);
